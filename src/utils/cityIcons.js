@@ -21,7 +21,7 @@ const CITY_ICONS = {
   "Rio de Janeiro": "🗿",
 };
 
-const DEFAULT_ICON = "🏙️";
+const DEFAULT_ICON = "🏠";
 
 const getCityIcon = (city) => CITY_ICONS[city] || DEFAULT_ICON;
 
