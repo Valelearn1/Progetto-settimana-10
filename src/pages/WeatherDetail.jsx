@@ -56,6 +56,13 @@ const WeatherDetail = () => {
     item.dt_txt.includes("12:00:00"),
   );
 
+  // l'API restituisce la data in formato ISO "YYYY-MM-DD" (ordine US-like);
+  // qui la riordiniamo in formato europeo "DD/MM/YYYY".
+  const formatDate = (isoDate) => {
+    const [year, month, day] = isoDate.split("-");
+    return `${day}/${month}/${year}`;
+  };
+
   return (
     <div className="weather-detail">
       <div className="current-weather">
@@ -70,7 +77,9 @@ const WeatherDetail = () => {
         {dailyForecast.map((day) => (
           <div className="forecast-day" key={day.dt}>
             {/* rendering della lista */}
-            <p className="forecast-date">{day.dt_txt.split(" ")[0]}</p>
+            <p className="forecast-date">
+              {formatDate(day.dt_txt.split(" ")[0])}
+            </p>
             <p className="forecast-temp">{Math.round(day.main.temp)}°C</p>
             <p className="forecast-description">
               {day.weather[0].description}
