@@ -59,7 +59,8 @@
   gap: 8px;
 }
 
-.search-icon-button {
+.search-icon-button,
+.theme-toggle-button {
   border: none;
   background: none;
   font-size: 18px;

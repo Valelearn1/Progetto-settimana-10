@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import useAuth from "../hooks/useAuth";
+import useSettings from "../hooks/useSettings";
 
 const Navbar = () => {
   const location = useLocation();
@@ -17,6 +18,8 @@ const Navbar = () => {
   const menuRef = useRef(null);
 
   const { username, logout, isLoggedIn } = useAuth();
+  const { theme, setTheme } = useSettings();
+  const toggleTheme = () => setTheme(theme === "calm" ? "default" : "calm");
 
   useEffect(() => {
     // Questa funzione viene chiamata ogni volta che l'utente clicca
@@ -73,6 +76,16 @@ const Navbar = () => {
             🔍
           </button>
         </div>
+
+        <button
+          className="theme-toggle-button"
+          onClick={toggleTheme}
+          aria-label={
+            theme === "calm" ? "Switch to default theme" : "Switch to calm theme"
+          }
+        >
+          🎨
+        </button>
 
         {isLoggedIn ? (
           // ref={menuRef} "collega" questo div al menuRef che abbiamo creato sopra:
