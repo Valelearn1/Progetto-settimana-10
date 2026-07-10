@@ -222,9 +222,42 @@
   transform: rotateY(180deg);
 }
 
+.search-bar-wrapper {
+  position: relative;
+}
+
 .search-bar {
   display: flex;
   gap: 8px;
+}
+
+.search-suggestions {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 240px;
+  list-style: none;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(30, 41, 59, 0.15);
+  padding: 8px;
+  overflow: hidden;
+}
+
+.search-suggestions li button {
+  width: 100%;
+  border: none;
+  background: none;
+  text-align: left;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #111c2d;
+  cursor: pointer;
+}
+
+.search-suggestions li button:hover {
+  background-color: #f0f3ff;
 }
 
 .search-input {
