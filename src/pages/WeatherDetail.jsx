@@ -40,11 +40,11 @@ const WeatherDetail = () => {
   }, [city]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p className="status-message">Loading...</p>;
   }
 
   if (error) {
-    return <p>{error}</p>;
+    return <p className="status-message error-message">{error}</p>;
   }
 
   // filtrare array: l'API dà una lettura ogni 3 ore per 5 giorni, quindi circa 40 elementi in tutto.
@@ -57,18 +57,24 @@ const WeatherDetail = () => {
   );
 
   return (
-    <div>
-      <h1>{weather.name}</h1>
-      <p>{weather.main.temp}°C</p>
-      <p>{weather.weather[0].description}</p>
+    <div className="weather-detail">
+      <div className="current-weather">
+        <h1 className="city-name">{weather.name}</h1>
+        <p className="current-temp">{Math.round(weather.main.temp)}°C</p>
+        <p className="current-description">
+          {weather.weather[0].description}
+        </p>
+      </div>
 
-      <div>
+      <div className="forecast-list">
         {dailyForecast.map((day) => (
-          <div key={day.dt}>
+          <div className="forecast-day" key={day.dt}>
             {/* rendering della lista */}
-            <p>{day.dt_txt.split(" ")[0]}</p>
-            <p>{day.main.temp} °C</p>
-            <p>{day.weather[0].description}</p>
+            <p className="forecast-date">{day.dt_txt.split(" ")[0]}</p>
+            <p className="forecast-temp">{Math.round(day.main.temp)}°C</p>
+            <p className="forecast-description">
+              {day.weather[0].description}
+            </p>
           </div>
         ))}
       </div>

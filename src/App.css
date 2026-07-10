@@ -1,0 +1,133 @@
+.home {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.app-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #0058be;
+  margin-bottom: 8px;
+}
+
+.home-subtitle {
+  color: #424754;
+  margin-bottom: 32px;
+}
+
+.search-bar {
+  display: flex;
+  gap: 8px;
+}
+
+.search-input {
+  flex: 1;
+  height: 56px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  box-shadow: 0 10px 30px rgba(30, 41, 59, 0.08);
+  font-size: 16px;
+}
+
+.search-input:focus {
+  outline: 2px solid #0058be;
+}
+
+.search-button {
+  height: 56px;
+  padding: 0 28px;
+  border: none;
+  border-radius: 9999px;
+  background-color: #0058be;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #004395;
+}
+
+.status-message {
+  max-width: 480px;
+  margin: 48px auto;
+  padding: 24px;
+  text-align: center;
+  font-size: 18px;
+  color: #424754;
+}
+
+.error-message {
+  color: #ba1a1a;
+}
+
+.weather-detail {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.current-weather {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.city-name {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.current-temp {
+  font-size: 64px;
+  font-weight: 600;
+  color: #0058be;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.current-description {
+  font-size: 18px;
+  color: #424754;
+  text-transform: capitalize;
+}
+
+.forecast-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.forecast-day {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 16px 20px;
+  box-shadow: 0 10px 30px rgba(30, 41, 59, 0.04);
+}
+
+.forecast-date {
+  font-weight: 500;
+  flex: 1;
+}
+
+.forecast-temp {
+  font-weight: 600;
+  color: #0058be;
+  flex: 1;
+  text-align: center;
+}
+
+.forecast-description {
+  color: #424754;
+  flex: 1;
+  text-align: right;
+  text-transform: capitalize;
+}
