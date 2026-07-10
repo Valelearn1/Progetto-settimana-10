@@ -139,6 +139,13 @@ const WeatherDetail = () => {
         >
           {favorite ? "★" : "☆"}
         </button>
+        <button
+          className="share-button"
+          onClick={handleShare}
+          aria-label="Share weather"
+        >
+          {copied ? "Copied!" : "📤"}
+        </button>
         <h1 className="city-name">{weather.name}</h1>
         <p className="current-temp">
           {Math.round(weather.main.temp)}

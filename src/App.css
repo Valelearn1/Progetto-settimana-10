@@ -485,6 +485,19 @@
   line-height: 1;
 }
 
+.share-button {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  border: none;
+  background: none;
+  font-size: 20px;
+  color: #0058be;
+  cursor: pointer;
+  line-height: 1;
+  white-space: nowrap;
+}
+
 .city-name {
   font-size: 28px;
   font-weight: 600;

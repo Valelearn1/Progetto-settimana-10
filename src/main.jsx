@@ -3,3 +3,12 @@ import "./index.css";
 import App from "./App.jsx";
 
 createRoot(document.getElementById("root")).render(<App />);
+
+// Registriamo il service worker solo se il browser lo supporta, e solo
+// dopo che la pagina ha finito di caricarsi (per non rallentare il
+// caricamento iniziale con questa operazione extra).
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js");
+  });
+}
