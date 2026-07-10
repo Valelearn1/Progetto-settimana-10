@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getCurrentWeather, getForecast } from "../api/weatherApi";
 import useFavorites from "../hooks/useFavorites";
 import useSettings from "../hooks/useSettings";
+import getWeatherBackground from "../utils/weatherBackgrounds";
 
 const WeatherDetail = () => {
   const { city } = useParams();
@@ -68,6 +69,15 @@ const WeatherDetail = () => {
     return `${day}/${month}/${year}`;
   };
 
+  // sunrise/sunset arrivano come timestamp Unix (secondi dal 1/1/1970).
+  // Date vuole i millisecondi, quindi moltiplichiamo per 1000.
+  const formatTime = (timestamp) => {
+    return new Date(timestamp * 1000).toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  };
+
   const favorite = isFavorite(weather.name);
 
   const toggleFavorite = () => {
@@ -80,7 +90,10 @@ const WeatherDetail = () => {
 
   return (
     <div className="weather-detail">
-      <div className="current-weather">
+      <div
+        className="current-weather"
+        style={{ background: getWeatherBackground(weather.weather[0].main) }}
+      >
         <button
           className="favorite-button"
           onClick={toggleFavorite}
@@ -96,6 +109,42 @@ const WeatherDetail = () => {
         <p className="current-description">
           {weather.weather[0].description}
         </p>
+      </div>
+
+      <div className="weather-stats">
+        <div className="weather-stat">
+          <span className="weather-stat-label">Humidity</span>
+          <span className="weather-stat-value">{weather.main.humidity}%</span>
+        </div>
+        <div className="weather-stat">
+          <span className="weather-stat-label">Wind</span>
+          <span className="weather-stat-value">
+            {/* l'API restituisce il vento in m/s con "metric", lo convertiamo
+            in km/h (1 m/s = 3.6 km/h); con "imperial" arriva già in mph */}
+            {unit === "metric"
+              ? `${Math.round(weather.wind.speed * 3.6)} km/h`
+              : `${Math.round(weather.wind.speed)} mph`}
+          </span>
+        </div>
+        <div className="weather-stat">
+          <span className="weather-stat-label">Feels like</span>
+          <span className="weather-stat-value">
+            {Math.round(weather.main.feels_like)}
+            {unitSymbol}
+          </span>
+        </div>
+        <div className="weather-stat">
+          <span className="weather-stat-label">Sunrise</span>
+          <span className="weather-stat-value">
+            {formatTime(weather.sys.sunrise)}
+          </span>
+        </div>
+        <div className="weather-stat">
+          <span className="weather-stat-label">Sunset</span>
+          <span className="weather-stat-value">
+            {formatTime(weather.sys.sunset)}
+          </span>
+        </div>
       </div>
 
       <div className="forecast-list">
