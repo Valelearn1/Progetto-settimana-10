@@ -1,11 +1,23 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useFavorites from "../hooks/useFavorites";
+import useSettings from "../hooks/useSettings";
 import getCityIcon from "../utils/cityIcons";
 import { getCurrentWeatherByCoords } from "../api/weatherApi";
 
+// Un piccolo saluto in base all'ora del giorno, usato solo nel tema calm
+// (vedi l'eyebrow "Good evening" nel rendering di riferimento).
+const getGreeting = () => {
+  const hour = new Date().getHours();
+  if (hour < 12) return "Good morning";
+  if (hour < 18) return "Good afternoon";
+  return "Good evening";
+};
+
 const Home = () => {
   const { favorites } = useFavorites();
+  const { theme } = useSettings();
+  const isCalm = theme === "calm";
   const navigate = useNavigate();
   const [isLocating, setIsLocating] = useState(false);
   const [locationError, setLocationError] = useState(null);
@@ -42,7 +54,16 @@ const Home = () => {
 
   return (
     <div className="home">
-      <h1 className="home-title">Your Favorite Cities</h1>
+      {isCalm && <p className="eyebrow">{getGreeting()}</p>}
+      <h1 className="home-title">
+        {isCalm ? "Your favorite skies" : "Your Favorite Cities"}
+      </h1>
+      {isCalm && (
+        <p className="home-subtitle">
+          A quieter way to check in on the places you love, and the sky
+          above wherever you are right now.
+        </p>
+      )}
 
       <button
         className="location-button"

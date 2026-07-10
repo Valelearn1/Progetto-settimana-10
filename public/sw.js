@@ -1,5 +1,8 @@
 const CACHE_NAME = "breezy-cache-v1";
-const APP_SHELL = ["/", "/index.html", "/manifest.json"];
+// Percorsi relativi (senza "/" iniziale): si risolvono rispetto alla
+// posizione di questo service worker, che su GitHub Pages non è alla
+// radice del dominio ma sotto /Progetto-settimana-10/.
+const APP_SHELL = ["./", "./index.html", "./manifest.json"];
 
 // "install" scatta la prima volta che il browser scarica questo service
 // worker: qui pre-carichiamo in cache le risorse base dell'app (l'"app shell").

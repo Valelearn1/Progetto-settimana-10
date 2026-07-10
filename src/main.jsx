@@ -9,6 +9,8 @@ createRoot(document.getElementById("root")).render(<App />);
 // caricamento iniziale con questa operazione extra).
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/sw.js");
+    // import.meta.env.BASE_URL è il valore di "base" da vite.config.js
+    // (es. "/Progetto-settimana-10/" in produzione, "/" in sviluppo locale).
+    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`);
   });
 }

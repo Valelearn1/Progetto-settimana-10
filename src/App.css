@@ -1,13 +1,13 @@
 .footer {
   text-align: center;
   padding: 24px;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--footer-text);
   font-size: 13px;
   line-height: 1.6;
 }
 
 .footer a {
-  color: #ffffff;
+  color: var(--footer-link);
   font-weight: 600;
   text-decoration: underline;
 }
@@ -20,7 +20,7 @@
   align-items: center;
   gap: 16px;
   padding: 16px 24px;
-  background-color: rgba(249, 249, 255, 0.85);
+  background-color: var(--navbar-bg);
   backdrop-filter: blur(10px);
   box-shadow: 0 1px 0 rgba(30, 41, 59, 0.06);
 }
@@ -28,14 +28,14 @@
 .navbar-brand {
   font-size: 20px;
   font-weight: 600;
-  color: #0058be;
+  color: var(--accent);
   text-decoration: none;
 }
 
 .back-button {
   border: none;
   background: none;
-  color: #0058be;
+  color: var(--accent);
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
@@ -89,7 +89,7 @@
   flex-direction: column;
   min-width: 160px;
   padding: 12px;
-  background-color: #ffffff;
+  background-color: var(--surface-solid);
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(30, 41, 59, 0.15);
 }
@@ -98,7 +98,7 @@
   padding: 8px 12px;
   font-size: 13px;
   font-weight: 600;
-  color: #424754;
+  color: var(--text-muted);
 }
 
 .user-dropdown-item {
@@ -108,13 +108,13 @@
   border-radius: 8px;
   text-align: left;
   font-size: 14px;
-  color: #111c2d;
+  color: var(--text);
   text-decoration: none;
   cursor: pointer;
 }
 
 .user-dropdown-item:hover {
-  background-color: #f0f3ff;
+  background-color: var(--surface-tint);
 }
 
 .logout-item {
@@ -122,7 +122,7 @@
 }
 
 .navbar-login-link {
-  color: #0058be;
+  color: var(--accent);
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
@@ -137,21 +137,38 @@
   margin: 32px auto;
   padding: 48px 24px;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: var(--surface-glass);
   backdrop-filter: blur(10px);
   border-radius: 24px;
   box-shadow: 0 10px 30px rgba(30, 41, 59, 0.15);
 }
 
+.eyebrow {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 14px;
+}
+
 .home-title {
   font-size: 28px;
   font-weight: 600;
-  color: #111c2d;
+  color: var(--text);
   margin-bottom: 32px;
 }
 
+.home-subtitle {
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 30ch;
+  margin: 0 auto 30px;
+}
+
 .empty-state {
-  color: #424754;
+  color: var(--text-muted);
   font-size: 16px;
   padding: 24px;
 }
@@ -159,8 +176,8 @@
 .location-button {
   border: none;
   border-radius: 9999px;
-  background-color: #ffffff;
-  color: #0058be;
+  background-color: var(--surface-solid);
+  color: var(--accent);
   font-weight: 600;
   font-size: 14px;
   padding: 10px 20px;
@@ -170,7 +187,7 @@
 }
 
 .location-button:hover:not(:disabled) {
-  background-color: #f0f3ff;
+  background-color: var(--surface-tint);
 }
 
 .location-button:disabled {
@@ -225,14 +242,14 @@
 }
 
 .favorite-card-front {
-  background-color: #ffffff;
-  color: #111c2d;
+  background-color: var(--surface-solid);
+  color: var(--text);
   box-shadow: 0 10px 30px rgba(30, 41, 59, 0.04);
 }
 
 .favorite-card-back {
-  background-color: #0058be;
-  color: #ffffff;
+  background-color: var(--accent);
+  color: var(--on-accent);
   transform: rotateY(180deg);
 }
 
@@ -251,7 +268,7 @@
   right: 0;
   width: 240px;
   list-style: none;
-  background-color: #ffffff;
+  background-color: var(--surface-solid);
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(30, 41, 59, 0.15);
   padding: 8px;
@@ -266,12 +283,12 @@
   padding: 8px 12px;
   border-radius: 8px;
   font-size: 14px;
-  color: #111c2d;
+  color: var(--text);
   cursor: pointer;
 }
 
 .search-suggestions li button:hover {
-  background-color: #f0f3ff;
+  background-color: var(--surface-tint);
 }
 
 .search-input {
@@ -280,13 +297,13 @@
   padding: 0 16px;
   border: none;
   border-radius: 9999px;
-  background-color: #ffffff;
+  background-color: var(--surface-solid);
   box-shadow: 0 4px 12px rgba(30, 41, 59, 0.1);
   font-size: 14px;
 }
 
 .search-input:focus {
-  outline: 2px solid #0058be;
+  outline: 2px solid var(--accent);
 }
 
 .search-button {
@@ -294,15 +311,15 @@
   padding: 0 20px;
   border: none;
   border-radius: 9999px;
-  background-color: #0058be;
-  color: #ffffff;
+  background-color: var(--accent);
+  color: var(--on-accent);
   font-weight: 600;
   font-size: 13px;
   cursor: pointer;
 }
 
 .search-button:hover {
-  background-color: #004395;
+  background-color: var(--accent-hover);
 }
 
 .login {
@@ -310,7 +327,7 @@
   margin: 32px auto;
   padding: 64px 24px;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: var(--surface-glass);
   backdrop-filter: blur(10px);
   border-radius: 24px;
   box-shadow: 0 10px 30px rgba(30, 41, 59, 0.15);
@@ -323,7 +340,7 @@
 }
 
 .login-subtitle {
-  color: #424754;
+  color: var(--text-muted);
   margin-bottom: 32px;
 }
 
@@ -338,28 +355,28 @@
   padding: 0 20px;
   border: none;
   border-radius: 9999px;
-  background-color: #ffffff;
+  background-color: var(--surface-solid);
   box-shadow: 0 10px 30px rgba(30, 41, 59, 0.08);
   font-size: 16px;
 }
 
 .login-input:focus {
-  outline: 2px solid #0058be;
+  outline: 2px solid var(--accent);
 }
 
 .login-button {
   height: 48px;
   border: none;
   border-radius: 9999px;
-  background-color: #0058be;
-  color: #ffffff;
+  background-color: var(--accent);
+  color: var(--on-accent);
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
 }
 
 .login-button:hover {
-  background-color: #004395;
+  background-color: var(--accent-hover);
 }
 
 .login-error {
@@ -373,8 +390,8 @@
   padding: 24px;
   text-align: center;
   font-size: 18px;
-  color: #424754;
-  background-color: rgba(255, 255, 255, 0.85);
+  color: var(--text-muted);
+  background-color: var(--surface-glass);
   backdrop-filter: blur(10px);
   border-radius: 24px;
   box-shadow: 0 10px 30px rgba(30, 41, 59, 0.15);
@@ -384,7 +401,7 @@
   color: #ba1a1a;
 }
 
-/* Skeleton loading: blocchi grigi che pulsano mentre aspettiamo i dati veri */
+/* Skeleton loading: blocchi che pulsano mentre aspettiamo i dati veri */
 @keyframes skeleton-pulse {
   0%,
   100% {
@@ -396,7 +413,7 @@
 }
 
 .skeleton {
-  background-color: #d8e3fb;
+  background-color: var(--skeleton-bg);
   border-radius: 12px;
   animation: skeleton-pulse 1.4s ease-in-out infinite;
 }
@@ -427,7 +444,7 @@
   max-width: 480px;
   margin: 32px auto;
   padding: 48px 24px;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: var(--surface-glass);
   backdrop-filter: blur(10px);
   border-radius: 24px;
   box-shadow: 0 10px 30px rgba(30, 41, 59, 0.15);
@@ -453,7 +470,7 @@
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  background-color: #ffffff;
+  background-color: var(--surface-solid);
   border-radius: 16px;
   padding: 12px 8px;
   box-shadow: 0 10px 30px rgba(30, 41, 59, 0.04);
@@ -464,13 +481,13 @@
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #727785;
+  color: var(--text-faint);
 }
 
 .weather-stat-value {
   font-size: 16px;
   font-weight: 600;
-  color: #111c2d;
+  color: var(--text);
 }
 
 .favorite-button,
@@ -485,7 +502,7 @@
   border: none;
   border-radius: 9999px;
   background-color: rgba(255, 255, 255, 0.6);
-  color: #0058be;
+  color: var(--accent);
   cursor: pointer;
   line-height: 1;
 }
@@ -514,14 +531,14 @@
 .current-temp {
   font-size: 64px;
   font-weight: 600;
-  color: #0058be;
+  color: var(--accent);
   line-height: 1;
   margin-bottom: 8px;
 }
 
 .current-description {
   font-size: 18px;
-  color: #424754;
+  color: var(--text-muted);
   text-transform: capitalize;
 }
 
@@ -535,7 +552,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #ffffff;
+  background-color: var(--surface-solid);
   border-radius: 16px;
   padding: 16px 20px;
   box-shadow: 0 10px 30px rgba(30, 41, 59, 0.04);
@@ -548,13 +565,13 @@
 
 .forecast-temp {
   font-weight: 600;
-  color: #0058be;
+  color: var(--accent);
   flex: 1;
   text-align: center;
 }
 
 .forecast-description {
-  color: #424754;
+  color: var(--text-muted);
   flex: 1;
   text-align: right;
   text-transform: capitalize;
@@ -565,7 +582,7 @@
   max-width: 480px;
   margin: 32px auto;
   padding: 48px 24px;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: var(--surface-glass);
   backdrop-filter: blur(10px);
   border-radius: 24px;
   box-shadow: 0 10px 30px rgba(30, 41, 59, 0.15);
@@ -580,7 +597,7 @@
 
 .profile-username {
   font-size: 18px;
-  color: #0058be;
+  color: var(--accent);
   font-weight: 600;
   margin-bottom: 32px;
 }
@@ -599,13 +616,13 @@
 }
 
 .profile-favorites li {
-  background-color: #ffffff;
+  background-color: var(--surface-solid);
   border-radius: 12px;
   padding: 12px 16px;
 }
 
 .profile-favorites a {
-  color: #111c2d;
+  color: var(--text);
   text-decoration: none;
   font-weight: 500;
 }
@@ -615,8 +632,12 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px;
-  background-color: #ffffff;
+  background-color: var(--surface-solid);
   border-radius: 16px;
+}
+
+.settings-row + .settings-row {
+  margin-top: 12px;
 }
 
 .settings-label {
@@ -625,7 +646,7 @@
 
 .unit-toggle-group {
   display: flex;
-  background-color: #f0f3ff;
+  background-color: var(--surface-tint);
   border-radius: 9999px;
   padding: 4px;
   gap: 4px;
@@ -635,7 +656,7 @@
   border: none;
   background: none;
   border-radius: 9999px;
-  color: #424754;
+  color: var(--text-muted);
   font-weight: 600;
   font-size: 14px;
   padding: 8px 20px;
@@ -643,12 +664,12 @@
 }
 
 .unit-option.active {
-  background-color: #0058be;
-  color: #ffffff;
+  background-color: var(--accent);
+  color: var(--on-accent);
 }
 
 .unit-option:not(.active):hover {
-  background-color: #dee8ff;
+  background-color: rgba(0, 0, 0, 0.06);
 }
 
 /* --- Responsive: schermi stretti (telefoni) --- */
@@ -665,7 +686,7 @@
     position: absolute;
     inset: 0;
     z-index: 20;
-    background-color: #f9f9ff;
+    background-color: var(--surface-solid);
     padding: 0 16px;
     gap: 12px;
   }
@@ -688,4 +709,47 @@
   .navbar-search:has(.search-bar-wrapper) .search-suggestions {
     width: 100%;
   }
+}
+
+/* --- Tema "calm": titoli in serif, e card preferiti pastello senza flip --- */
+[data-theme="calm"] .home-title,
+[data-theme="calm"] .navbar-brand,
+[data-theme="calm"] .city-name,
+[data-theme="calm"] .login-title,
+[data-theme="calm"] .profile-title,
+[data-theme="calm"] .settings-title {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
+    serif;
+  font-weight: 500;
+}
+
+[data-theme="calm"] .home-title {
+  margin-bottom: 12px;
+}
+
+/* Nel tema calm le card dei preferiti non si girano più: restano ferme,
+mostrando solo il fronte, con uno sfondo pastello diverso a rotazione
+(4 varianti, poi il ciclo ricomincia) invece del bianco uniforme. */
+[data-theme="calm"] .favorite-card:hover .favorite-card-inner {
+  transform: none;
+}
+
+[data-theme="calm"] .favorite-card-back {
+  display: none;
+}
+
+[data-theme="calm"] .favorite-card:nth-child(4n + 1) .favorite-card-front {
+  background-color: #dbe0f4;
+}
+
+[data-theme="calm"] .favorite-card:nth-child(4n + 2) .favorite-card-front {
+  background-color: #e2e8d7;
+}
+
+[data-theme="calm"] .favorite-card:nth-child(4n + 3) .favorite-card-front {
+  background-color: #f6e2dc;
+}
+
+[data-theme="calm"] .favorite-card:nth-child(4n + 4) .favorite-card-front {
+  background-color: var(--surface-solid);
 }
