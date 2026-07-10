@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { searchCities } from "../api/weatherApi";
 
-const SearchBar = () => {
+const SearchBar = ({ onSearch }) => {
   const [city, setCity] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const navigate = useNavigate();
@@ -11,13 +11,16 @@ const SearchBar = () => {
     e.preventDefault();
     if (city.trim().length === 0) return;
     navigate(`/weather/${city}`);
+    setCity("");
     setSuggestions([]);
+    onSearch?.();
   };
 
   const handleSelect = (name) => {
-    setCity(name);
     navigate(`/weather/${name}`);
+    setCity("");
     setSuggestions([]);
+    onSearch?.();
   };
 
   // Debounce: se cercassimo le città ad ogni singolo tasto premuto, faremmo

@@ -62,7 +62,9 @@ const Navbar = () => {
 
       <div className="navbar-right">
         <div className="navbar-search">
-          {isSearchOpen && <SearchBar />}
+          {isSearchOpen && (
+            <SearchBar onSearch={() => setIsSearchOpen(false)} />
+          )}
           <button
             className="search-icon-button"
             onClick={() => setIsSearchOpen((prev) => !prev)}
