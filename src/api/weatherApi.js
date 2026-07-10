@@ -1,5 +1,6 @@
 const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
+const FORECAST_URL = "https://api.openweathermap.org/data/2.5/forecast";
 
 const getCurrentWeather = async (city) => {
   const url = `${BASE_URL}?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric`;
@@ -17,4 +18,15 @@ const getCurrentWeather = async (city) => {
   return data;
 };
 
-export { getCurrentWeather };
+const getForecast = async (city) => {
+  const url = `${FORECAST_URL}?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric`;
+
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error("Forecast not found");
+  }
+  const data = await response.json();
+  return data;
+};
+
+export { getCurrentWeather, getForecast };
