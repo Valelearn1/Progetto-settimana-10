@@ -29,4 +29,18 @@ const getForecast = async (city, unit = "metric") => {
   return data;
 };
 
-export { getCurrentWeather, getForecast };
+// Stesso endpoint di getCurrentWeather, ma cerca per coordinate (lat/lon)
+// invece che per nome città — ci serve per "use my location". La risposta
+// include comunque "name", quindi possiamo risalire al nome della città.
+const getCurrentWeatherByCoords = async (lat, lon, unit = "metric") => {
+  const url = `${BASE_URL}?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=${unit}`;
+
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error("Location not found");
+  }
+  const data = await response.json();
+  return data;
+};
+
+export { getCurrentWeather, getForecast, getCurrentWeatherByCoords };

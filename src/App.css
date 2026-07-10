@@ -142,6 +142,28 @@
   padding: 24px;
 }
 
+.location-button {
+  border: none;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  color: #0058be;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(30, 41, 59, 0.08);
+  cursor: pointer;
+}
+
+.location-button:hover:not(:disabled) {
+  background-color: #f0f3ff;
+}
+
+.location-button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
 .favorites-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
