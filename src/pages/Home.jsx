@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import useFavorites from "../hooks/useFavorites";
+import getCityIcon from "../utils/cityIcons";
 
 const Home = () => {
   const { favorites } = useFavorites();
@@ -21,7 +22,12 @@ const Home = () => {
               className="favorite-card"
             >
               <div className="favorite-card-inner">
-                <div className="favorite-card-front">{city}</div>
+                <div className="favorite-card-front">
+                  <span className="favorite-card-icon">
+                    {getCityIcon(city)}
+                  </span>
+                  <span>{city}</span>
+                </div>
                 <div className="favorite-card-back">View weather →</div>
               </div>
             </Link>
