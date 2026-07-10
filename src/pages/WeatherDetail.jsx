@@ -19,6 +19,7 @@ const WeatherDetail = () => {
   // conviene partire già in stato "loading" per evitare
   // quell'istante in cui loading è falso ma weather è ancora null.
   const [error, setError] = useState(null);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const fetchWeather = async () => {
@@ -98,6 +99,31 @@ const WeatherDetail = () => {
     } else {
       addFavorite(weather.name);
     }
+  };
+
+  const handleShare = async () => {
+    const shareText = `${weather.name}: ${Math.round(weather.main.temp)}${unitSymbol}, ${weather.weather[0].description}`;
+
+    // navigator.share apre il pannello di condivisione nativo del
+    // telefono/browser (solo se il dispositivo lo supporta, es. mobile).
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: `Weather in ${weather.name}`,
+          text: shareText,
+          url: window.location.href,
+        });
+      } catch {
+        // l'utente ha annullato la condivisione: non facciamo nulla
+      }
+      return;
+    }
+
+    // Fallback per i browser desktop senza navigator.share: copiamo il
+    // testo negli appunti e mostriamo una conferma per un paio di secondi.
+    await navigator.clipboard.writeText(`${shareText} — ${window.location.href}`);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
