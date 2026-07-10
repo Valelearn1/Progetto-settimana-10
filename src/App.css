@@ -473,29 +473,36 @@
   color: #111c2d;
 }
 
-.favorite-button {
+.favorite-button,
+.share-button {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 16px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
-  background: none;
-  font-size: 28px;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.6);
   color: #0058be;
   cursor: pointer;
   line-height: 1;
 }
 
+.favorite-button:hover,
+.share-button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.favorite-button {
+  right: 16px;
+  font-size: 22px;
+}
+
 .share-button {
-  position: absolute;
-  top: 4px;
-  left: 0;
-  border: none;
-  background: none;
-  font-size: 20px;
-  color: #0058be;
-  cursor: pointer;
-  line-height: 1;
-  white-space: nowrap;
+  left: 16px;
+  font-size: 18px;
 }
 
 .city-name {
@@ -642,4 +649,43 @@
 
 .unit-option:not(.active):hover {
   background-color: #dee8ff;
+}
+
+/* --- Responsive: schermi stretti (telefoni) --- */
+@media (max-width: 480px) {
+  .favorites-list {
+    grid-template-columns: 1fr;
+  }
+
+  /* Quando la ricerca è aperta su mobile, l'input fisso a 200px non ci
+  sta più insieme a brand/login nella stessa riga della navbar. Invece
+  di stringere tutto, la facciamo diventare una barra a tutta larghezza
+  che copre la navbar (pattern "search takeover" usato da molte app). */
+  .navbar-search:has(.search-bar-wrapper) {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    background-color: #f9f9ff;
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  .navbar-search:has(.search-bar-wrapper) .search-bar-wrapper {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .navbar-search:has(.search-bar-wrapper) .search-bar {
+    width: 100%;
+  }
+
+  .navbar-search:has(.search-bar-wrapper) .search-input {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+  }
+
+  .navbar-search:has(.search-bar-wrapper) .search-suggestions {
+    width: 100%;
+  }
 }

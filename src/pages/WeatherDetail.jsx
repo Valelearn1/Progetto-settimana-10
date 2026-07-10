@@ -144,7 +144,7 @@ const WeatherDetail = () => {
           onClick={handleShare}
           aria-label="Share weather"
         >
-          {copied ? "Copied!" : "📤"}
+          {copied ? "✓" : "📤"}
         </button>
         <h1 className="city-name">{weather.name}</h1>
         <p className="current-temp">
