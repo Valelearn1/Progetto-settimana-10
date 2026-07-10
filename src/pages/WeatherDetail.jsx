@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getCurrentWeather, getForecast } from "../api/weatherApi";
+import useFavorites from "../hooks/useFavorites";
 
 const WeatherDetail = () => {
   const { city } = useParams();
+  const { isFavorite, addFavorite, removeFavorite } = useFavorites();
 
   // 3 stati: weather (null iniziale), loading (bool), error (null iniziale)
   const [weather, setWeather] = useState(null);
@@ -63,9 +65,26 @@ const WeatherDetail = () => {
     return `${day}/${month}/${year}`;
   };
 
+  const favorite = isFavorite(weather.name);
+
+  const toggleFavorite = () => {
+    if (favorite) {
+      removeFavorite(weather.name);
+    } else {
+      addFavorite(weather.name);
+    }
+  };
+
   return (
     <div className="weather-detail">
       <div className="current-weather">
+        <button
+          className="favorite-button"
+          onClick={toggleFavorite}
+          aria-label={favorite ? "Remove from favorites" : "Add to favorites"}
+        >
+          {favorite ? "★" : "☆"}
+        </button>
         <h1 className="city-name">{weather.name}</h1>
         <p className="current-temp">{Math.round(weather.main.temp)}°C</p>
         <p className="current-description">
