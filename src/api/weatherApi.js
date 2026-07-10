@@ -2,13 +2,13 @@ const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
 const FORECAST_URL = "https://api.openweathermap.org/data/2.5/forecast";
 
-const getCurrentWeather = async (city) => {
-  const url = `${BASE_URL}?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric`;
+const getCurrentWeather = async (city, unit = "metric") => {
+  const url = `${BASE_URL}?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=${unit}`;
   // ${BASE_URL} → inserisce https://api.openweathermap.org/data/2.5/weather
   // ?q= → inizio dei parametri della query, q è il nome del parametro per la città
   // ${encodeURIComponent(city)} → inserisce il nome della città reso "sicuro" per un URL (gestisce spazi, accenti, ecc.)
   // &appid=${API_KEY} → la tua chiave API
-  // &units=metric → fisso, per avere Celsius invece di Kelvin
+  // &units= → "metric" per Celsius, "imperial" per Fahrenheit
 
   const response = await fetch(url);
   if (!response.ok) {
@@ -18,8 +18,8 @@ const getCurrentWeather = async (city) => {
   return data;
 };
 
-const getForecast = async (city) => {
-  const url = `${FORECAST_URL}?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric`;
+const getForecast = async (city, unit = "metric") => {
+  const url = `${FORECAST_URL}?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=${unit}`;
 
   const response = await fetch(url);
   if (!response.ok) {

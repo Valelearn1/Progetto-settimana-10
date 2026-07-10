@@ -3,6 +3,8 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import WeatherDetail from "./pages/WeatherDetail";
 import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
 import "./App.css";
 
 function App() {
@@ -13,6 +15,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/weather/:city" element={<WeatherDetail />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/settings" element={<Settings />} />
       </Routes>
     </BrowserRouter>
   );

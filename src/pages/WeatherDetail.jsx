@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getCurrentWeather, getForecast } from "../api/weatherApi";
 import useFavorites from "../hooks/useFavorites";
+import useSettings from "../hooks/useSettings";
 
 const WeatherDetail = () => {
   const { city } = useParams();
   const { isFavorite, addFavorite, removeFavorite } = useFavorites();
+  const { unit } = useSettings();
+  const unitSymbol = unit === "metric" ? "°C" : "°F";
 
   // 3 stati: weather (null iniziale), loading (bool), error (null iniziale)
   const [weather, setWeather] = useState(null);
@@ -23,8 +26,8 @@ const WeatherDetail = () => {
 
       try {
         const [currentData, forecastData] = await Promise.all([
-          getCurrentWeather(city),
-          getForecast(city),
+          getCurrentWeather(city, unit),
+          getForecast(city, unit),
         ]);
 
         setWeather(currentData);
@@ -39,7 +42,7 @@ const WeatherDetail = () => {
     };
 
     fetchWeather();
-  }, [city]);
+  }, [city, unit]);
 
   if (loading) {
     return <p className="status-message">Loading...</p>;
@@ -86,7 +89,10 @@ const WeatherDetail = () => {
           {favorite ? "★" : "☆"}
         </button>
         <h1 className="city-name">{weather.name}</h1>
-        <p className="current-temp">{Math.round(weather.main.temp)}°C</p>
+        <p className="current-temp">
+          {Math.round(weather.main.temp)}
+          {unitSymbol}
+        </p>
         <p className="current-description">
           {weather.weather[0].description}
         </p>
@@ -99,7 +105,10 @@ const WeatherDetail = () => {
             <p className="forecast-date">
               {formatDate(day.dt_txt.split(" ")[0])}
             </p>
-            <p className="forecast-temp">{Math.round(day.main.temp)}°C</p>
+            <p className="forecast-temp">
+              {Math.round(day.main.temp)}
+              {unitSymbol}
+            </p>
             <p className="forecast-description">
               {day.weather[0].description}
             </p>
