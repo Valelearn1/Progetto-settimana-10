@@ -46,7 +46,19 @@ const WeatherDetail = () => {
   }, [city, unit]);
 
   if (loading) {
-    return <p className="status-message">Loading...</p>;
+    return (
+      <div className="weather-detail">
+        <div className="skeleton skeleton-hero" />
+        <div className="skeleton-stats">
+          <div className="skeleton skeleton-stat" />
+          <div className="skeleton skeleton-stat" />
+          <div className="skeleton skeleton-stat" />
+        </div>
+        <div className="skeleton skeleton-line" />
+        <div className="skeleton skeleton-line" />
+        <div className="skeleton skeleton-line" />
+      </div>
+    );
   }
 
   if (error) {

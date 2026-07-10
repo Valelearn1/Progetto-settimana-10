@@ -337,6 +337,45 @@
   color: #ba1a1a;
 }
 
+/* Skeleton loading: blocchi grigi che pulsano mentre aspettiamo i dati veri */
+@keyframes skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.skeleton {
+  background-color: #d8e3fb;
+  border-radius: 12px;
+  animation: skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+.skeleton-hero {
+  height: 180px;
+  margin: -48px -24px 32px;
+  border-radius: 24px 24px 0 0;
+}
+
+.skeleton-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.skeleton-stat {
+  height: 56px;
+}
+
+.skeleton-line {
+  height: 64px;
+  margin-bottom: 12px;
+}
+
 .weather-detail {
   max-width: 480px;
   margin: 32px auto;
