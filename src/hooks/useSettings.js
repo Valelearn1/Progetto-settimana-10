@@ -11,11 +11,7 @@ const useSettings = () => {
     localStorage.setItem(STORAGE_KEY, unit);
   }, [unit]);
 
-  const toggleUnit = () => {
-    setUnit((prev) => (prev === "metric" ? "imperial" : "metric"));
-  };
-
-  return { unit, toggleUnit };
+  return { unit, setUnit };
 };
 
 export default useSettings;

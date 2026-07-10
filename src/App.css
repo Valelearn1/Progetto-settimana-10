@@ -589,17 +589,30 @@
   font-weight: 500;
 }
 
-.unit-toggle {
-  border: none;
+.unit-toggle-group {
+  display: flex;
+  background-color: #f0f3ff;
   border-radius: 9999px;
-  background-color: #0058be;
-  color: #ffffff;
+  padding: 4px;
+  gap: 4px;
+}
+
+.unit-option {
+  border: none;
+  background: none;
+  border-radius: 9999px;
+  color: #424754;
   font-weight: 600;
   font-size: 14px;
   padding: 8px 20px;
   cursor: pointer;
 }
 
-.unit-toggle:hover {
-  background-color: #004395;
+.unit-option.active {
+  background-color: #0058be;
+  color: #ffffff;
+}
+
+.unit-option:not(.active):hover {
+  background-color: #dee8ff;
 }

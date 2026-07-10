@@ -1,7 +1,7 @@
 import useSettings from "../hooks/useSettings";
 
 const Settings = () => {
-  const { unit, toggleUnit } = useSettings();
+  const { unit, setUnit } = useSettings();
 
   return (
     <div className="settings">
@@ -9,9 +9,20 @@ const Settings = () => {
 
       <div className="settings-row">
         <span className="settings-label">Temperature unit</span>
-        <button className="unit-toggle" onClick={toggleUnit}>
-          {unit === "metric" ? "°C" : "°F"}
-        </button>
+        <div className="unit-toggle-group">
+          <button
+            className={`unit-option ${unit === "metric" ? "active" : ""}`}
+            onClick={() => setUnit("metric")}
+          >
+            °C
+          </button>
+          <button
+            className={`unit-option ${unit === "imperial" ? "active" : ""}`}
+            onClick={() => setUnit("imperial")}
+          >
+            °F
+          </button>
+        </div>
       </div>
     </div>
   );
