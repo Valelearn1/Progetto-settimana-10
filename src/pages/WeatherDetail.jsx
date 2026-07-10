@@ -47,11 +47,31 @@ const WeatherDetail = () => {
     return <p>{error}</p>;
   }
 
+  // filtrare array: l'API dà una lettura ogni 3 ore per 5 giorni, quindi circa 40 elementi in tutto.
+  // Se li mostrassi tutti, l'utente vedrebbe 40 righe invece di "i prossimi 5 giorni".
+  // Il .filter() con .includes("12:00:00") serve a scegliere quali elementi tenere:
+  // tra le 8 letture di ogni giorno, ne teniamo solo una (quella delle 12:00),
+  // così da forecast (40 elementi) ottieni dailyForecast (circa 5 elementi, uno a giorno).
+  const dailyForecast = forecast.filter((item) =>
+    item.dt_txt.includes("12:00:00"),
+  );
+
   return (
     <div>
       <h1>{weather.name}</h1>
       <p>{weather.main.temp}°C</p>
       <p>{weather.weather[0].description}</p>
+
+      <div>
+        {dailyForecast.map((day) => (
+          <div key={day.dt}>
+            {/* rendering della lista */}
+            <p>{day.dt_txt.split(" ")[0]}</p>
+            <p>{day.main.temp} °C</p>
+            <p>{day.weather[0].description}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
